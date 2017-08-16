@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { GlobalService } from '../../../shared/global.service';
 
 @Component({
   selector: 'app-blog',
@@ -7,17 +8,73 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BlogComponent implements OnInit {
 
-  @Input() shirt:object;
+  @Input() shirt:any;
 
-  constructor() { }
+  constructor(private globalService: GlobalService) {
+    globalService.itemValue.subscribe((nextValue) => {
+      console.log(nextValue);  // this will happen on every change
+    })
+   }
 
   ngOnInit() {
-  }
+    this.isInShop();
+  } 
 
   isfav:boolean=false;
   
     makeItFav() {
      this.isfav = !this.isfav;
     } 
+    
+    addToCart(){
+      if(localStorage.getItem('itemsUnwire')!=null && localStorage.getItem('itemsUnwire')!=''){
+        this.items = localStorage.getItem('itemsUnwire').split(',');
+      }
+      else this.items = [];
+
+      let count = 0;
+      let ind = '';
+      for(let it of this.items){
+        // console.log(this.shirt.id, parseInt(it)); 
+        if(this.shirt.id === parseInt(it)) {
+          count++;
+          ind = it;
+        }
+      }
+ 
+      
+
+      if(count>0){
+        var index = this.items.indexOf(ind);
+        
+        if (index > -1) {
+          this.items.splice(index, 1);
+        }
+      }
+      else if(count===0) this.items.push(this.shirt.id.toString()) 
+
+      // localStorage.setItem('itemsUnwire',this.items.toString());
+      this.globalService.theItem = this.items.toString();
+      this.isInCart = !this.isInCart ; 
+
+       
+    }
+ 
+
+    isInCart = false;
+    items = [];
+
+
+    isInShop(){
+      if(localStorage.getItem('itemsUnwire')!=null && localStorage.getItem('itemsUnwire')!=''){
+        this.items = localStorage.getItem('itemsUnwire').split(',');
+        // console.log("los items son",this.items); 
+        for(let it of this.items){
+          // console.log(this.shirt.id, parseInt(it)); 
+          if(this.shirt.id === parseInt(it)) this.isInCart = true;
+        }
+      }
+      else this.items = [];
+    }
 
 }

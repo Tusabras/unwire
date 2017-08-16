@@ -1,0 +1,80 @@
+<div id="shopModal" class="modal fade in left" style="z-index:20000" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <!--<faq></faq>-->
+  
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">MY BASKET CART</h4>
+        </div>
+        <div class="modal-body">
+            <span *ngFor="let item of [1,2,3,4,5,6]">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="" class="remove-item"><i class="fa fa-times" style="color:grey;"></i></a>
+                    <img src="https://unsplash.it/128/128" width='40' height='40'>
+                    
+                </div>
+              <div class="col-sm-4">
+                  <p style="text-align:left;"><b>{{item}}</b></p>
+              </div>
+              <div class="col-sm-4"> 
+                  <p style="text-align:right;"><b>12 €</b></p>
+              </div>
+            </div>
+            <hr>
+            </span>
+            
+            <div class="row">
+              <div class="col-sm-8">
+                  <p style="text-align:left;">TAX (8%)</p>
+              </div>
+              <div class="col-sm-4">
+                  <p style="text-align:right;"><i class="fa fa-euro"></i> 12</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-6">
+                  <p style="font-size: 1.5em;text-align:left;">Total cost</p>
+              </div>
+              <div class="col-sm-6">
+                  <p style="font-size: 1.5em;text-align:right;"><b style="color: #b63327;"><i class="fa fa-euro"></i> 12 </b></p>
+              </div>
+            </div>
+              <!--<form class="form" autocomplete="off"  (ngSubmit)="user.inviteUser(namee,emaile,passe)" #registerForm="ngForm">
+              <div class="espacio"></div>
+            <fieldset class="form-group m-b-2">
+                <label for="formGroupExampleInput">user</label>
+                <input type="text" class="form-control user" [(ngModel)]="namee" placeholder="" ngControl="name"  #name="ngForm" required>
+               
+              </fieldset>
+              <fieldset class="form-group m-b-2">
+                <label for="formGroupExampleInput">email</label>
+                <input type="email" class="form-control email" [(ngModel)]="emaile" placeholder="" ngControl="email"  #email="ngForm" required>
+               
+              </fieldset>
+              <fieldset class="form-group">
+                <label for="formGroupExampleInput2">pass</label>
+                <input type="password" class="form-control password" [(ngModel)]="passe" ngControl="password" placeholder="" required>
+              </fieldset>
+  
+            <div class="errorMessage">
+                <p >
+                  {{translations[user.error]}}
+                </p>
+  
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" >Añadir usuario</button>
+            </form>-->
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">{{translations["CANCEL"]}}</button> -->
+          <button type="button"  data-dismiss="modal" class="btn btn-primary">Order now</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  

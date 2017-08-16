@@ -25,12 +25,12 @@
         || (isGrey && shirt.colour === 'grey')
         || (isWhite && shirt.colour === 'white')
         
-        || (isXS && shirt.size === 'xs' || shirt.size === 'XS' || shirt.size === 'x-small')
-        || (isS && shirt.size === 's' || shirt.size === 'S' || shirt.size === 'small')
-        || (isM && shirt.size === 'm' || shirt.size === 'M' || shirt.size === 'medium')
-        || (isL && shirt.size === 'l' || shirt.size === 'L' || shirt.size === 'large' )
-        || (isXL && shirt.size === 'xl' || shirt.size === 'XL' || shirt.size === 'x-large')
-        || (isXXL && shirt.size === 'xxl' || shirt.size === 'XXL' || shirt.size === 'xx-large')
+        || (isXS && (shirt.size === 'xs' || shirt.size === 'XS' || shirt.size === 'x-small'))
+        || (isS && (shirt.size === 's' || shirt.size === 'S' || shirt.size === 'small'))
+        || (isM && (shirt.size === 'm' || shirt.size === 'M' || shirt.size === 'medium'))
+        || (isL && (shirt.size === 'l' || shirt.size === 'L' || shirt.size === 'large' ))
+        || (isXL && (shirt.size === 'xl' || shirt.size === 'XL' || shirt.size === 'x-large'))
+        || (isXXL && (shirt.size === 'xxl' || shirt.size === 'XXL' || shirt.size === 'xx-large'))
  
         || (!isBrown && !isGold && !isBlue && !isPink && !isRed && !isGreen && !isYellow && !isBlack && !isGrey && !isWhite
         && !isXS && !isS && !isM && !isL && !isXL && !isXXL)" [shirt]="shirt"></app-blog>

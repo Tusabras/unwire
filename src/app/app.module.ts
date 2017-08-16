@@ -10,9 +10,12 @@ import { HttpModule } from '@angular/http';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 // import { RouterModule } from '@angular/router';
 import { ClothesService } from './shared/clothes.service';
+import { GlobalService } from './shared/global.service';
 import { FiltersComponent } from './home/filters/filters.component';
 import { ColorComponent } from './home/filters/color/color.component';
 import { SizeComponent } from './home/filters/size/size.component';
+import { ShopComponent } from './shop/shop.component';
+import { ShopModalComponent } from './shop/shop-modal/shop-modal.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +27,16 @@ import { SizeComponent } from './home/filters/size/size.component';
     ItemDetailsComponent,
     FiltersComponent,
     ColorComponent,
-    SizeComponent
+    SizeComponent,
+    ShopComponent,
+    ShopModalComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, 
     AppRoutingModule,
     HttpModule 
   ],
-  providers: [ClothesService],
+  providers: [ClothesService, GlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

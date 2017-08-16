@@ -7,10 +7,10 @@
   
             
               <span class="ab-right">
-                  <button  class="btn touchable" [class.boto-actiu]="isfav" [class.boto-inactiu]="!isfav" (click)="makeItFav()"><i class="fa fa-heart"></i></button>
+                  <!-- <button  class="btn touchable" [class.boto-actiu]="isfav" [class.boto-inactiu]="!isfav" (click)="makeItFav()"><i class="fa fa-heart"></i></button> -->
 
-                  <button  class="btn touchable" [class.boto-actiu]="isliked" [class.boto-inactiu]="!isliked">Add to cart <i class="fa fa-shopping-cart"></i></button>
-                  
+                  <button  class="btn touchable" (click)="addToCart()" [class.boto-actiu]="isInCart" [class.boto-inactiu]="!isInCart">{{isInCart?'Remove from cart':'Add to cart'}} <i class="fa fa-shopping-cart"></i></button>
+                   
               </span> 
         
            </div> 

@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   isL = false;
   isXL = false;
   isXXL = false;
-  
+
   constructor(private clothesService: ClothesService) { 
     // this.note = '';
     // this.flagIsSending = false;

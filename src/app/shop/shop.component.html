@@ -1,0 +1,15 @@
+<div class="shop" (click)="showShopModal()"> 
+ 
+
+
+    <span class="icon-thumbnail">
+    <!--<i class="fa fa-shopping-cart"></i>-->
+    <svg class="nc-icon outline sv"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="22px" viewBox="0 0 32 32"><g transform="translate(0, 0)"> <circle data-color="color-2" fill="none" stroke="white" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" cx="10" cy="28" r="3" stroke-linejoin="miter"></circle> <circle data-color="color-2" fill="none" stroke="white" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" cx="27" cy="28" r="3" stroke-linejoin="miter"></circle> <polyline data-cap="butt" fill="none" stroke="white" stroke-width="2" stroke-miterlimit="10" points="5.8,6 30,6 28,21 8,21 5,1 1,1 " stroke-linejoin="miter" stroke-linecap="butt"></polyline> </g></svg>
+    <!--<svg class="nc-icon outline" style="margin-top: 10px;"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="22px" viewBox="0 0 32 32"><g transform="translate(0, 0)"> <polyline fill="none" stroke="#444444" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" points="1,1 5,1 5,21 30,21 " stroke-linejoin="miter"></polyline> <circle data-color="color-2" fill="none" stroke="#444444" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" cx="7" cy="28" r="3" stroke-linejoin="miter"></circle> <circle data-color="color-2" fill="none" stroke="#444444" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" cx="28" cy="28" r="3" stroke-linejoin="miter"></circle> <polyline fill="none" stroke="#444444" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" points="5,5 28,5 25,17 5,17 " stroke-linejoin="miter"></polyline> </g></svg>-->
+    <div *ngIf="items && items.length>0" class="noti_bubble"><span class="numb">{{items.length}}</span></div>
+    <!--<svg class="nc-icon glyph" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24"><g> <circle data-color="color-2" fill="#788195" cx="6.5" cy="21.5" r="2.5"></circle> <circle data-color="color-2" fill="#788195" cx="19.5" cy="21.5" r="2.5"></circle> <path fill="#788195" d="M20,17H6c-0.501,0-0.925-0.371-0.991-0.868L3.125,2H0V0h4c0.501,0,0.925,0.371,0.991,0.868L5.542,5H23 c0.316,0,0.614,0.149,0.802,0.403c0.189,0.254,0.247,0.582,0.156,0.884l-3,10C20.831,16.71,20.441,17,20,17z"></path> </g></svg>-->
+    </span>
+ 
+  </div>  
+
+  <app-shop-modal></app-shop-modal> 
