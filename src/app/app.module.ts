@@ -10,6 +10,9 @@ import { HttpModule } from '@angular/http';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 // import { RouterModule } from '@angular/router';
 import { ClothesService } from './shared/clothes.service';
+import { FiltersComponent } from './home/filters/filters.component';
+import { ColorComponent } from './home/filters/color/color.component';
+import { SizeComponent } from './home/filters/size/size.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { ClothesService } from './shared/clothes.service';
     FooterComponent,
     ListBlogsComponent,
     BlogComponent,
-    ItemDetailsComponent
+    ItemDetailsComponent,
+    FiltersComponent,
+    ColorComponent,
+    SizeComponent
   ],
   imports: [
     BrowserModule,

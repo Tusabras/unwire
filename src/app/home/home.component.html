@@ -16,7 +16,7 @@
         <div class="headers">
           <h2 data-text="MEN" class="header">MEN</h2>
           <h2 data-text="WOMEN" class="header">WOMEN</h2>
-          <h2 data-text="CHILD" class="header">CHILDREN</h2>
+          <h2 data-text="CHILDREN" class="header">CHILDREN</h2>
           <h2 data-text="BABIES" class="header">BABIES</h2>
         </div> 
       </div>
@@ -155,9 +155,49 @@
           <h4 class='description-number'>02</h4>
         </div>
     </div>
+    <div class="booking filters">
+        <app-filters
+            (gold$)="isGold=$event"
+            (brown$)="isBrown=$event"
+            (red$)="isRed=$event"
+            (yellow$)="isYellow=$event"
+            (pink$)="isPink=$event"
+            (green$)="isGreen=$event"
+            (black$)="isBlack=$event"
+            (white$)="isWhite=$event"
+            (grey$)="isGrey=$event"
+            (blue$)="isBlue=$event"
+          
+            (XS$)="isXS=$event"
+            (S$)="isS=$event"
+            (M$)="isM=$event"
+            (L$)="isL=$event"
+            (XL$)="isXL=$event" 
+            (XXL$)="isXXL=$event"
+        ></app-filters>
+    </div> 
   <div class="booking">
+    <app-list-blogs 
+    [shirts]="shirts"
 
-    <app-list-blogs [shirts]="shirts"></app-list-blogs>
+    [isGold]="isGold"
+    [isBrown]="isBrown"
+    [isRed]="isRed"
+    [isYellow]="isYellow"
+    [isPink]="isPink"
+    [isGreen]="isGreen"
+    [isBlack]="isBlack"
+    [isWhite]="isWhite"
+    [isGrey]="isGrey"
+    [isBlue]="isBlue" 
+  
+    [isXS]="isXS"
+    [isS]="isS"
+    [isM]="isM"
+    [isL]="isL"
+    [isXL]="isXL" 
+    [isXXL]="isXXL"
+    ></app-list-blogs>
 
   
   </div>

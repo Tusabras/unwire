@@ -1,8 +1,17 @@
-.receta{
+    .center{
+        margin: 40px 30px;
+    } 
+
+    .isActive{
+        border:5px solid darkgreen;
+    }
+   .receta{
+     
     border-radius:7px;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 240px;
+    width: 100px;
+    height: 100px;
     margin: 20px 15px;
     display: -webkit-flex; /* Safari */
     display: flex;
@@ -60,6 +69,7 @@
   .swiper-container-receta{
       height: 200px;
       width: 100%;
+      cursor: pointer;
       position: relative;
       .swiper-wrapper{
       

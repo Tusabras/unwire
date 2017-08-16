@@ -7,9 +7,28 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ListBlogsComponent implements OnInit {
   @Input() shirts:Array<object>;
-  constructor() { }
 
-  ngOnInit() {
-  }
+  @Input() isGold:boolean;
+  @Input() isBrown:boolean;
+  @Input() isRed:boolean;
+  @Input() isYellow:boolean;
+  @Input() isPink:boolean;
+  @Input() isGreen:boolean;
+  @Input() isBlack:boolean;
+  @Input() isWhite:boolean;
+  @Input() isGrey:boolean;
+  @Input() isBlue:boolean;
+
+  @Input() isXS:boolean;
+  @Input() isS:boolean;
+  @Input() isM:boolean;
+  @Input() isL:boolean;
+  @Input() isXL:boolean;
+  @Input() isXXL:boolean;
+
+
+  constructor() { }
+ 
+  ngOnInit() {}
 
 }
