@@ -1,0 +1,29 @@
+<div class="receta" [class.eye-image]="true"  [ngStyle]="{
+  'background': 'url('+shirt.picture+') no-repeat center center',
+  'background-size': 'cover' }" >
+
+  <div class="swiper-container-receta" style="background-color:transparent;">
+    <div class="swiper-wrapper ">
+  
+            
+              <span class="ab-right">
+                  <button  class="btn touchable" [class.boto-actiu]="isfav" [class.boto-inactiu]="!isfav" (click)="makeItFav()"><i class="fa fa-heart"></i></button>
+
+                  <button  class="btn btn-info touchable" [class.boto-actiu2]="isliked" [class.boto-inactiu2]="!isliked"><i class="fa fa-shopping-cart"></i></button>
+                  
+              </span> 
+        
+           </div> 
+  </div>
+<!-- [routerLink]="['More-details', {type:replaceWhiteSpaces(thiscard.property.type),name:replaceWhiteSpaces(thiscard.property.name),id:thiscard.key,lang: lang}]"
+[routerLink]="['More-details', {type:replaceWhiteSpaces(thiscard.property.type),name:replaceWhiteSpaces(thiscard.property.name),id:thiscard.key,lang: lang}]" -->
+      <div class="contenido" >
+          <h3>{{shirt.name}}</h3>
+          <a >{{shirt.price | currency:'EUR':true:'1.2-2'}}</a>
+          <hr>
+
+              <a class="btn btn-success" [routerLink]="['/more-details-item', shirt.id]">See more details</a>
+          
+      </div>
+
+</div>

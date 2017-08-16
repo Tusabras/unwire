@@ -1,0 +1,164 @@
+<div class="container">
+  <div class="wrap">
+
+    <div class="welcome">
+
+      <div class="images-wrapper">
+        <div class="slide" style="background-image: url('/assets/images/discover/aditya-romansa-117341.jpg')"></div>
+        <div class="slide" style="background-image: url('/assets/images/discover/mayra-carreno-62387.jpg')"></div>
+        <div class="slide" style="background-image: url('/assets/images/discover/tycho-atsma-153058.jpg')"></div>
+        <div class="slide" style="background-image: url('/assets/images/discover/jake-young-168592.jpg')"></div>
+        <div class="image-filter"></div> 
+      </div>
+
+      <div class="headers-wrapper">
+        <h1 class='title'>FIND THE LATEST FASHION FOR</h1>
+        <div class="headers">
+          <h2 data-text="MEN" class="header">MEN</h2>
+          <h2 data-text="WOMEN" class="header">WOMEN</h2>
+          <h2 data-text="CHILD" class="header">CHILDREN</h2>
+          <h2 data-text="BABIES" class="header">BABIES</h2>
+        </div> 
+      </div>
+
+      <div class="footer">
+        <p class="copyright">@ Copyright 2016-2017<span>Unwire All Rights Reserved</span></p>
+        <div class="policies">
+          <a class="link" routerLink="/">Terms</a>
+          <span class='dot'>•</span>
+          <a class="link" routerLink="/">Privacy</a>
+        </div>
+      </div>
+
+      <h4 class='background-header'>UNWIRE</h4>
+      <span class='mouse'></span>
+    </div>
+    
+  </div>
+</div>
+
+<div class="booking">
+    <div class=" description">
+      <div class='description-inner'>
+        <h3 class='description-subtitle'>SPECIAL OFFERS</h3>
+        <h2 class='description-title'>HAVE A GOOD SUMMER!</h2>
+        <p class='description-text'>Do not know what to put on this summer? Check out our products on sale!</p>
+      </div>
+      <h4 class='description-number'>01</h4>
+    </div>
+<!-- 
+
+  [ngStyle]="{
+    'background': 'url(' + imgArray(thiscard.url)[0] + ') no-repeat center center',
+    'background-size': 'cover' }" 
+    style="border-radius:7px;background-repeat: no-repeat;background-size: cover;"
+
+ -->
+    <div class="interactive">
+      <div class='yachts-wrapper'> 
+        <div class='yachts' *ngIf="shirts">
+          <div class='top'> 
+            <div class='left'>
+              <div [routerLink]="['/more-details-item', shirts[2].id]" class='yacht n3' *ngIf="shirts[2]" [ngStyle]="{
+                'background': 'url('+ shirts[2].picture +') no-repeat center center',
+                'background-size': 'cover' }" 
+                ><h5 class='yacht-header'>{{shirts[2].name}}</h5><h5 class='yacht-header'>{{shirts[2].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+              <div [routerLink]="['/more-details-item', shirts[1].id]" *ngIf="shirts[1]" [ngStyle]="{ 
+                'background': 'url('+ shirts[1].picture +') no-repeat center center',
+                'background-size': 'cover' }" class='yacht n2'><h5 class='yacht-header'>{{shirts[1].name}}</h5><h5 class='yacht-header'>{{shirts[1].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+              <div [routerLink]="['/more-details-item', shirts[0].id]" *ngIf="shirts[0]" [ngStyle]="{
+                'background': 'url('+ shirts[0].picture +') no-repeat center center',
+                'background-size': 'cover' }" 
+                 class='yacht n1'><h5 class='yacht-header'>{{shirts[0].name}}</h5><h5 class='yacht-header'>{{shirts[0].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+            </div> 
+            <div class='right'>
+              <div [routerLink]="['/more-details-item', shirts[5].id]" *ngIf="shirts[5]" [ngStyle]="{
+                'background': 'url('+ shirts[5].picture +') no-repeat center center',
+                'background-size': 'cover' }" class='yacht n6'><h5 class='yacht-header'>{{shirts[5].name}}</h5><h5 class='yacht-header'>{{shirts[5].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+              <div [routerLink]="['/more-details-item', shirts[4].id]" *ngIf="shirts[4]" [ngStyle]="{
+                'background': 'url('+ shirts[4].picture +') no-repeat center center',
+                'background-size': 'cover' }" class='yacht n5'><h5 class='yacht-header'>{{shirts[4].name}}</h5><h5 class='yacht-header'>{{shirts[4].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+              <div [routerLink]="['/more-details-item', shirts[3].id]" *ngIf="shirts[3]" [ngStyle]="{
+                'background': 'url('+ shirts[3].picture +') no-repeat center center',
+                'background-size': 'cover' }" class='yacht n4'><h5 class='yacht-header'>{{shirts[3].name}}</h5><h5 class='yacht-header'>{{shirts[3].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+            </div>
+          </div>
+          <div class='mid'>
+            <div class='left'>
+              <div [routerLink]="['/more-details-item', shirts[8].id]" *ngIf="shirts[8]" [ngStyle]="{
+                'background': 'url('+ shirts[8].picture +') no-repeat center center',
+                'background-size': 'cover' }" class='yacht n9'><h5 class='yacht-header'>{{shirts[8].name}}</h5><h5 class='yacht-header'>{{shirts[8].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+              <div [routerLink]="['/more-details-item', shirts[7].id]" *ngIf="shirts[7]" [ngStyle]="{
+                'background': 'url('+ shirts[7].picture +') no-repeat center center',
+                'background-size': 'cover' }" class='yacht n8'><h5 class='yacht-header'>{{shirts[7].name}}</h5><h5 class='yacht-header'>{{shirts[7].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+              <div [routerLink]="['/more-details-item', shirts[6].id]" *ngIf="shirts[6]" [ngStyle]="{
+                'background': 'url('+ shirts[6].picture +') no-repeat center center',
+                'background-size': 'cover' }" class='yacht n7'><h5 class='yacht-header'>{{shirts[6].name}}</h5><h5 class='yacht-header'>{{shirts[6].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+            </div>
+            <div class='right'>
+              <div [routerLink]="['/more-details-item', shirts[11].id]" *ngIf="shirts[11]" [ngStyle]="{
+                'background': 'url('+ shirts[11].picture +') no-repeat center center',
+                'background-size': 'cover' }" class='yacht n12'><h5 class='yacht-header'>{{shirts[11].name}}</h5><h5 class='yacht-header'>{{shirts[11].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+              <div [routerLink]="['/more-details-item', shirts[10].id]" *ngIf="shirts[10]" [ngStyle]="{
+                'background': 'url('+ shirts[10].picture +') no-repeat center center',
+                'background-size': 'cover' }" class='yacht n11'><h5 class='yacht-header'>{{shirts[10].name}}</h5><h5 class='yacht-header'>{{shirts[10].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+              <div [routerLink]="['/more-details-item', shirts[9].id]" *ngIf="shirts[9]" [ngStyle]="{
+                'background': 'url('+ shirts[9].picture +') no-repeat center center',
+                'background-size': 'cover' }" class='yacht n10'><h5 class='yacht-header'>{{shirts[9].name}}</h5><h5 class='yacht-header'>{{shirts[9].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+            </div>
+          </div>
+          <div class='bot'>
+            <div class='left'>
+              <div [routerLink]="['/more-details-item', shirts[14].id]" *ngIf="shirts[14]" [ngStyle]="{
+                'background': 'url('+ shirts[14].picture +') no-repeat center center',
+                'background-size': 'cover' }" class='yacht n15'><h5 class='yacht-header'>{{shirts[14].name}}</h5><h5 class='yacht-header'>{{shirts[14].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+              <div [routerLink]="['/more-details-item', shirts[13].id]" *ngIf="shirts[13]" [ngStyle]="{
+                'background': 'url('+ shirts[13].picture +') no-repeat center center',
+                'background-size': 'cover' }" class='yacht n14'><h5 class='yacht-header'>{{shirts[13].name}}</h5><h5 class='yacht-header'>{{shirts[13].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+              <div [routerLink]="['/more-details-item', shirts[12].id]" *ngIf="shirts[12]" [ngStyle]="{
+                'background': 'url('+ shirts[12].picture +') no-repeat center center',
+                'background-size': 'cover' }" class='yacht n13'><h5 class='yacht-header'>{{shirts[12].name}}</h5><h5 class='yacht-header'>{{shirts[12].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+            </div>
+            <div class='right' > 
+              <div [routerLink]="['/more-details-item', shirts[17].id]" *ngIf="shirts[17]" [ngStyle]="{
+                'background': 'url('+ shirts[17].picture +') no-repeat center center',
+                'background-size': 'cover' }" class='yacht n18'><h5 class='yacht-header'>{{shirts[17].name}}</h5><h5 class='yacht-header'>{{shirts[17].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+              <div [routerLink]="['/more-details-item', shirts[16].id]" *ngIf="shirts[16]" [ngStyle]="{
+                'background': 'url('+ shirts[16].picture +') no-repeat center center',
+                'background-size': 'cover' }" class='yacht n17'><h5 class='yacht-header'>{{shirts[16].name}}</h5><h5 class='yacht-header'>{{shirts[16].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+              <div [routerLink]="['/more-details-item', shirts[15].id]" *ngIf="shirts[15]" [ngStyle]="{
+                'background': 'url('+ shirts[15].picture +') no-repeat center center',
+                'background-size': 'cover' }" class='yacht n16'><h5 class='yacht-header'>{{shirts[15].name}}</h5><h5 class='yacht-header'>{{shirts[15].price | currency:'EUR':true:'1.2-2'}}</h5><span class='yacht-explore'>SEE MORE DETAILS</span></div>
+            </div>
+          </div>
+           
+        </div>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <div class="experience">
+      
+
+      <div class="interactive video">
+      </div>
+      <div class="description">
+          <div class='description-inner'>
+            <h3 class='description-subtitle'>FIND WHAT YOU LOOKING FOR</h3>
+            <h2 class='description-title'>SUPERIOR EXPERIENCE</h2>
+            <p class='description-text'>Here you can see some of our clothes, can not find what you looking for? Do not mind contacting us, let us see if we can help you get what you looking for!</p>
+            <a class='description-button'>CONTACT US</a>
+          </div>
+          <h4 class='description-number'>02</h4>
+        </div>
+    </div>
+  <div class="booking">
+
+    <app-list-blogs [shirts]="shirts"></app-list-blogs>
+
+  
+  </div>
+  <app-footer></app-footer>
