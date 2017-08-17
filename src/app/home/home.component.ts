@@ -11,30 +11,38 @@ export class HomeComponent implements OnInit {
 
   shirts:Array<object>
 
-  isGold = false;
-  isBrown = false;
-  isRed = false;
-  isYellow = false;
-  isPink = false;
-  isGreen = false;
-  isBlack = false;
-  isWhite = false;
-  isGrey = false;
-  isBlue = false;
+  isGold:boolean = false;
+  isBrown:boolean = false;
+  isRed:boolean = false;
+  isYellow:boolean = false;
+  isPink:boolean = false;
+  isGreen:boolean = false;
+  isBlack:boolean = false;
+  isWhite:boolean = false;
+  isGrey:boolean = false;
+  isBlue:boolean = false;
 
-  isXS = false;
-  isS = false;
-  isM = false;
-  isL = false;
-  isXL = false;
-  isXXL = false;
+  isXS:boolean = false;
+  isS:boolean = false;
+  isM:boolean = false;
+  isL:boolean = false;
+  isXL:boolean = false;
+  isXXL:boolean = false;
 
   constructor(private clothesService: ClothesService) { 
-    // this.note = '';
-    // this.flagIsSending = false;
     this.shirts=[];
   }
 
+  ngOnInit() {
+    this.findClothes();
+    this.begin();
+  } 
+
+  begin(){ 
+    window.scrollTo(0,0);
+  }
+
+  //we call the server to get the shirts.
   findClothes(){ 
     this.clothesService.getClothes()
     .map(res => res.json())
@@ -49,11 +57,4 @@ export class HomeComponent implements OnInit {
     // Repeat the action until it does correctly
     this.findClothes();
   }
-  ngOnInit() {
-
-    this.findClothes();
-  } 
-
-  
-
 }

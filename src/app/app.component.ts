@@ -9,6 +9,8 @@ import { GlobalService } from './shared/global.service';
 export class AppComponent implements OnInit{
   title = 'Unwire';
   constructor(private globalService:GlobalService){}
+
+  //We init the localstorage
   ngOnInit(){ 
     if(localStorage.getItem('itemsUnwire')===null){
       this.globalService.theItem = '';

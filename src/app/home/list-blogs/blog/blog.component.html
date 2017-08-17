@@ -7,16 +7,13 @@
   
             
               <span class="ab-right">
-                  <!-- <button  class="btn touchable" [class.boto-actiu]="isfav" [class.boto-inactiu]="!isfav" (click)="makeItFav()"><i class="fa fa-heart"></i></button> -->
-
                   <button *ngIf="shirt.quantity && shirt.quantity>0" class="btn touchable" (click)="addToCart()" [class.boto-actiu]="isInCart" [class.boto-inactiu]="!isInCart">{{isInCart?'Remove from cart':'Add to cart'}} <i class="fa fa-shopping-cart"></i></button>
                    <p class="txt" *ngIf="!shirt.quantity || shirt.quantity===0">Not in stock</p>
               </span> 
          
            </div> 
   </div>
-<!-- [routerLink]="['More-details', {type:replaceWhiteSpaces(thiscard.property.type),name:replaceWhiteSpaces(thiscard.property.name),id:thiscard.key,lang: lang}]"
-[routerLink]="['More-details', {type:replaceWhiteSpaces(thiscard.property.type),name:replaceWhiteSpaces(thiscard.property.name),id:thiscard.key,lang: lang}]" -->
+
       <div class="contenido" >
           <h3>{{shirt.name}}</h3>
           <a >{{shirt.price | currency:'EUR':true:'1.2-2'}}</a>

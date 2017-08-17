@@ -17,14 +17,8 @@ export class ShopModalComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  begin(){ 
-    // $('html, body').animate({scrollTop:0}, {duration:0});
-  }
-  gratuity=0.1;
-  setGratuity(newval){
-    this.gratuity = newval;
-  }
+  
+  //sum the cost of the shirts
   sumTotal(){
     let sum = 0;
     for(let shirt of this.shirtsToBuy){
@@ -33,6 +27,7 @@ export class ShopModalComponent implements OnInit {
     return sum;
   }
   
+  //make an order to the server
   makeOrder(){
     this.clothesService.postOrder(this.sumTotal(),this.shirtsToBuy)
     
@@ -48,18 +43,22 @@ export class ShopModalComponent implements OnInit {
       () => console.log('get clothes completed')
    );
   }
-errorMsg='';
-thereHaveBeenAnError=false;
-private handleError(error: any): void {
-    console.log(error);
-    this.errorMsg = 'Something happened, the order could not be done! (check console)';
-    this.thereHaveBeenAnError = true;  
-    setTimeout(()=> {
-      this.errorMsg = '';
-      this.thereHaveBeenAnError = false;
-    }, 3000);
-}
 
+
+  errorMsg='';
+  thereHaveBeenAnError=false;
+  private handleError(error: any): void {
+      console.log(error);
+      this.errorMsg = 'Something happened, the order could not be done! (check console)';
+      this.thereHaveBeenAnError = true;  
+      setTimeout(()=> {
+        this.errorMsg = '';
+        this.thereHaveBeenAnError = false;
+      }, 3000);
+  }
+
+
+  //remove shirt from the cart.
   removeFromCart(id,key){
     if(localStorage.getItem('itemsUnwire')!=null && localStorage.getItem('itemsUnwire')!=''){
       this.items = localStorage.getItem('itemsUnwire').split(',');
@@ -69,7 +68,6 @@ private handleError(error: any): void {
     let count = 0; 
     let ind = '';
     for(let it of this.items){
-      // console.log(this.shirt.id, parseInt(it)); 
       if(id === parseInt(it)) {
         count++;
         ind = it;

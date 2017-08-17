@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClothesService } from '../shared/clothes.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { GlobalService } from '../shared/global.service';
-// declare let $:any;
+declare let $:any;
  
 @Component({
   selector: 'app-item-details',
@@ -14,36 +14,56 @@ export class ItemDetailsComponent implements OnInit {
   m_shirt:any;
   
     constructor(private route: ActivatedRoute, private router: Router, private clothesService: ClothesService, private globalService: GlobalService) { 
-      // this.note = '';
-      // this.flagIsSending = false;
       this.m_shirt={};
+      
       globalService.itemValue.subscribe((nextValue) => {
-        // console.log(nextValue);  // this will happen on every change
+        //we update the values after a change
         setTimeout(() => {
           this.isInShop();
         }, 200);
       }) 
     }
+
+    ngOnInit() {
+      this.begin();
+      this.route.params.forEach((params: Params) => {
+        if(params['uid']){
+            let uid = params['uid'];
+            // console.log(uid);
+            this.findClothes(uid);
+            this.uid = uid;
+            this.isInShop();
+        }
+    });
+    
+    }
+
+    //scroll up when the pages appears.
+    begin(){ 
+      window.scrollTo(0,0);
+    }
+
+    //makes string to uppercase
     toUpper(s){
       if(s)return s.toUpperCase();
       else return '';
     } 
-
+    
+    //decide the string depending on the numb of items
     decideSingularPlural(num){
       if(num===1) return ' UNIT';
       else return ' UNITS';
     }
+
+    //we search for the shirt we are looking for.
     findClothes(uid){  
       this.clothesService.getClothes()
       .map(res => res.json())
       .subscribe(
         data => {
           let intUID = parseInt(uid);
-          // this.shirts = data;
-          // console.log("el uid es",uid,data)
+
           for(let i of data){
-            // console.log(i);
-               
             if(i.id === intUID) this.m_shirt = i;
           }
         },
@@ -58,22 +78,8 @@ export class ItemDetailsComponent implements OnInit {
     }
       
     uid='';
-    ngOnInit() {
-      
-      this.route.params.forEach((params: Params) => {
-        if(params['uid']){
-            let uid = params['uid'];
-            // console.log(uid);
-            this.findClothes(uid);
-            this.uid = uid;
-            this.isInShop();
-        }
-    });
-        // setTimeout(() => {
-        //   $('html, body').animate({scrollTop:0}, {duration:0});
-        // }, 200);
-    } 
-
+     
+    //We add the item to the shopping cart.
     addToCart(){
       if(localStorage.getItem('itemsUnwire')!=null && localStorage.getItem('itemsUnwire')!=''){
         this.items = localStorage.getItem('itemsUnwire').split(',');
@@ -98,7 +104,6 @@ export class ItemDetailsComponent implements OnInit {
       }
       else if(count===0) this.items.push(this.m_shirt.id.toString()) 
 
-      // localStorage.setItem('itemsUnwire',this.items.toString());
       this.globalService.theItem = this.items.toString();
       this.isInCart = !this.isInCart ;
 
@@ -109,14 +114,14 @@ export class ItemDetailsComponent implements OnInit {
     isInCart = false;
     items = [];
 
-
+    //We check wheter the item is on the shop or not.
     isInShop(){
       if(localStorage.getItem('itemsUnwire')!=null && localStorage.getItem('itemsUnwire')!=''){
         this.items = localStorage.getItem('itemsUnwire').split(',');
-        // console.log("los items son",this.items); 
+
         let count=0;
         for(let it of this.items){
-          // console.log(this.m_shirt.id, parseInt(it)); 
+
           if(this.uid === it) count++;
         }
         if(count===0) this.isInCart = false;

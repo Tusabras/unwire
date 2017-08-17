@@ -16,7 +16,7 @@ export class ShopComponent implements OnInit {
     this.getItems();
 
     globalService.itemValue.subscribe((nextValue) => {
-      // console.log(nextValue);  // this will happen on every change
+      // this will happen on every change
       this.getItemsNext(nextValue);
     })
    
@@ -26,12 +26,8 @@ export class ShopComponent implements OnInit {
     this.findClothes(); 
   }
   shirts=[];
-  // findClothes(){
-  //   this.clothesService.getClothes().then((data) => {
-  //       this.shirts = data;
-  //   }); 
-  // }
 
+  //We charge all the shirts.
   findClothes(){ 
     this.clothesService.getClothes()
     .map(res => res.json())
@@ -48,6 +44,8 @@ export class ShopComponent implements OnInit {
   }
 
   shirtsToBuy=[];
+
+  //open the modal with the shopping information
   showShopModal(){
     this.shirtsToBuy=[];
     for(let shirt of this.shirts){
@@ -59,12 +57,10 @@ export class ShopComponent implements OnInit {
     }
     $('#shopModal').modal('show');
   }
-
-  
-
-
   isInCart = false;
   items = [];
+
+  //We get the items we have stored in our localstorage. So they are persisted on time.
   getItems(){
     if(localStorage.getItem('itemsUnwire')!=null && localStorage.getItem('itemsUnwire')!=''){
       this.items = localStorage.getItem('itemsUnwire').split(',');
@@ -74,26 +70,15 @@ export class ShopComponent implements OnInit {
       // localStorage.removeItem('itemsUnwire');
     }
   } 
+
+  //We update our information of the items, with the next values that are about to come.
   getItemsNext(nextValue){ 
-    // console.log(localStorage.getItem('itemsUnwire'),localStorage.getItem('itemsUnwire')!='',localStorage.getItem('itemsUnwire')!=' ', localStorage.getItem('itemsUnwire')!='')
     if(localStorage.getItem('itemsUnwire')!=null && nextValue!=''){
       this.items = nextValue.split(',');
     }
     else { 
       this.items = [];
-      // localStorage.removeItem('itemsUnwire');
     }
-  }
-  isInShop(){
-    if(localStorage.getItem('itemsUnwire')!=null && localStorage.getItem('itemsUnwire')!=''){
-      this.items = localStorage.getItem('itemsUnwire').split(',');
-      // console.log("los items son",this.items); 
-      for(let it of this.items){
-        // console.log(this.m_shirt.id, parseInt(it)); 
-        // if(this.uid === it) this.isInCart = true;
-      }
-    }
-    else this.items = []; 
   }
 
 }
