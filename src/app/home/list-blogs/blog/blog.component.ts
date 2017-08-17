@@ -13,12 +13,16 @@ export class BlogComponent implements OnInit {
   constructor(private globalService: GlobalService) {
     globalService.itemValue.subscribe((nextValue) => {
       // console.log(nextValue);  // this will happen on every change
-      this.isInShop();
+      setTimeout(() => {
+        this.isInShop();
+      }, 200);  
     })
    }
 
   ngOnInit() {
     this.isInShop();
+    
+    
   } 
 
   isfav:boolean=false;
@@ -28,9 +32,13 @@ export class BlogComponent implements OnInit {
     } 
     
     addToCart(){
+      console.log(localStorage.getItem('itemsUnwire'));
       if(localStorage.getItem('itemsUnwire')!=null && localStorage.getItem('itemsUnwire')!=''){
         this.items = localStorage.getItem('itemsUnwire').split(',');
       }
+      // else if(localStorage.getItem('itemsUnwire')===null){
+      //   this.items.push(this.shirt.id.toString()) 
+      // } 
       else this.items = [];
 
       let count = 0;

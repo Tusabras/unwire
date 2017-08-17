@@ -39,9 +39,9 @@ export class ShopModalComponent implements OnInit {
     .map(res => res.json())
     .subscribe(
       data => {
-        this.items = data;
+        this.items = [];
         this.shirtsToBuy = [];
-        this.globalService.theItem = this.items.toString();
+        this.globalService.theItem = '';
         $('#shopModal').modal('hide');
       },
       err => this.handleError(err),

@@ -61,6 +61,7 @@
          name="email" 
          #email="ngModel" type='email' [(ngModel)]="contactEmail" placeholder='Enter email' /> -->
             <button *ngIf="m_shirt.quantity && m_shirt.quantity>0" class='subscribe-submit' [class.goRed]="isInCart" (click)="addToCart()">{{isInCart?'ALREADY ON YOUR CART':'ADD TO MY CART!'}}</button>
+            <button *ngIf="!m_shirt.quantity || m_shirt.quantity === 0" class='subscribe-submit goRed'>Contact me when it is available</button>
             
           </div>   
   

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ClothesService } from '../shared/clothes.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { GlobalService } from '../shared/global.service';
-
+// declare let $:any;
+ 
 @Component({
   selector: 'app-item-details',
   templateUrl: './item-details.component.html',
@@ -18,7 +19,9 @@ export class ItemDetailsComponent implements OnInit {
       this.m_shirt={};
       globalService.itemValue.subscribe((nextValue) => {
         // console.log(nextValue);  // this will happen on every change
-        this.isInShop();
+        setTimeout(() => {
+          this.isInShop();
+        }, 200);
       }) 
     }
     toUpper(s){
@@ -30,21 +33,33 @@ export class ItemDetailsComponent implements OnInit {
       if(num===1) return ' UNIT';
       else return ' UNITS';
     }
-    findClothes(uid){ 
-      this.clothesService.getClothes().then((data) => {
-        let intUID = parseInt(uid);
+    findClothes(uid){  
+      this.clothesService.getClothes()
+      .map(res => res.json())
+      .subscribe(
+        data => {
+          let intUID = parseInt(uid);
           // this.shirts = data;
           // console.log("el uid es",uid,data)
           for(let i of data){
             // console.log(i);
-              
+               
             if(i.id === intUID) this.m_shirt = i;
           }
-      });  
+        },
+        err => this.handleError(err,uid),
+        () => console.log('get clothes completed')
+     ); 
     } 
+  
+    private handleError(error: any,uid): void {
+      // Repeat the action until it does correctly
+      this.findClothes(uid);
+    }
+      
     uid='';
     ngOnInit() {
-  
+      
       this.route.params.forEach((params: Params) => {
         if(params['uid']){
             let uid = params['uid'];
@@ -54,6 +69,9 @@ export class ItemDetailsComponent implements OnInit {
             this.isInShop();
         }
     });
+        // setTimeout(() => {
+        //   $('html, body').animate({scrollTop:0}, {duration:0});
+        // }, 200);
     } 
 
     addToCart(){
