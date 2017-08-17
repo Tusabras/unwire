@@ -12,7 +12,8 @@ export class BlogComponent implements OnInit {
 
   constructor(private globalService: GlobalService) {
     globalService.itemValue.subscribe((nextValue) => {
-      console.log(nextValue);  // this will happen on every change
+      // console.log(nextValue);  // this will happen on every change
+      this.isInShop();
     })
    }
 
@@ -69,12 +70,19 @@ export class BlogComponent implements OnInit {
       if(localStorage.getItem('itemsUnwire')!=null && localStorage.getItem('itemsUnwire')!=''){
         this.items = localStorage.getItem('itemsUnwire').split(',');
         // console.log("los items son",this.items); 
+        let count=0;
         for(let it of this.items){
           // console.log(this.shirt.id, parseInt(it)); 
-          if(this.shirt.id === parseInt(it)) this.isInCart = true;
+          if(this.shirt.id === parseInt(it)) count++;
         }
+        if(count===0) this.isInCart = false;
+        else this.isInCart = true;
       }
-      else this.items = [];
+      else {
+        this.items = [];
+        this.isInCart = false;
+      }
     }
+    
 
 }

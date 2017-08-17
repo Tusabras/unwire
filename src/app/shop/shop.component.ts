@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../shared/global.service';
+import { ClothesService } from '../shared/clothes.service';
 declare let $:any;
 
 @Component({
@@ -9,56 +10,57 @@ declare let $:any;
 })
 export class ShopComponent implements OnInit {
 
-  constructor(private globalService: GlobalService) {
+  
+  constructor(private globalService: GlobalService, private clothesService: ClothesService) {
     
     this.getItems();
 
     globalService.itemValue.subscribe((nextValue) => {
-      console.log(nextValue);  // this will happen on every change
+      // console.log(nextValue);  // this will happen on every change
       this.getItemsNext(nextValue);
     })
    
    }
   
   ngOnInit() {
-    // setInterval(()=>{},3000);
+    this.findClothes(); 
+  }
+  shirts=[];
+  // findClothes(){
+  //   this.clothesService.getClothes().then((data) => {
+  //       this.shirts = data;
+  //   }); 
+  // }
 
-    
+  findClothes(){ 
+    this.clothesService.getClothes()
+    .map(res => res.json())
+    .subscribe(
+      data => this.shirts = data,
+      err => this.handleError(err),
+      () => console.log('get clothes completed')
+   ); 
+  }
+ 
+  private handleError(error: any): void{
+    // Repeat the action until it does correctly
+    this.findClothes();
   }
 
+  shirtsToBuy=[];
   showShopModal(){
+    this.shirtsToBuy=[];
+    for(let shirt of this.shirts){
+      // console.log(shirt);
+      for(let i of this.items){
+        // console.log(shirt.id,i);
+        if(shirt.id===parseInt(i)) this.shirtsToBuy.push(shirt);
+      }
+    }
     $('#shopModal').modal('show');
   }
 
-  removeFromCart(id){
-    if(localStorage.getItem('itemsUnwire')!=null && localStorage.getItem('itemsUnwire')!=''){
-      this.items = localStorage.getItem('itemsUnwire').split(',');
-    }
-    else this.items = [];
-
-    let count = 0; 
-    let ind = '';
-    for(let it of this.items){
-      // console.log(this.shirt.id, parseInt(it)); 
-      if(id === parseInt(it)) {
-        count++;
-        ind = it;
-      }
-    }
-    if(count>0){
-      var index = this.items.indexOf(ind);
-      
-      if (index > -1) {
-        this.items.splice(index, 1);
-      }
-    }
-    else if(count===0) this.items.push(id.toString()) 
-
-    this.globalService.theItem = this.items.toString();
-    this.isInCart = !this.isInCart ;
-
-    
-  }
+  
 
 
   isInCart = false;

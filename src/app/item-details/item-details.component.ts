@@ -17,8 +17,9 @@ export class ItemDetailsComponent implements OnInit {
       // this.flagIsSending = false;
       this.m_shirt={};
       globalService.itemValue.subscribe((nextValue) => {
-        console.log(nextValue);  // this will happen on every change
-      })
+        // console.log(nextValue);  // this will happen on every change
+        this.isInShop();
+      }) 
     }
     toUpper(s){
       if(s)return s.toUpperCase();
@@ -60,7 +61,7 @@ export class ItemDetailsComponent implements OnInit {
         this.items = localStorage.getItem('itemsUnwire').split(',');
       }
       else this.items = [];
-
+ 
       let count = 0; 
       let ind = '';
       for(let it of this.items){
@@ -70,9 +71,6 @@ export class ItemDetailsComponent implements OnInit {
           ind = it;
         }
       }
- 
-      
-
       if(count>0){
         var index = this.items.indexOf(ind);
         
@@ -87,7 +85,7 @@ export class ItemDetailsComponent implements OnInit {
       this.isInCart = !this.isInCart ;
 
       
-    }
+    } 
  
 
     isInCart = false;
@@ -98,12 +96,19 @@ export class ItemDetailsComponent implements OnInit {
       if(localStorage.getItem('itemsUnwire')!=null && localStorage.getItem('itemsUnwire')!=''){
         this.items = localStorage.getItem('itemsUnwire').split(',');
         // console.log("los items son",this.items); 
+        let count=0;
         for(let it of this.items){
           // console.log(this.m_shirt.id, parseInt(it)); 
-          if(this.uid === it) this.isInCart = true;
+          if(this.uid === it) count++;
         }
+        if(count===0) this.isInCart = false;
+        else this.isInCart = true;
       }
-      else this.items = []; 
+      else {
+        this.items = [];
+        this.isInCart = false;
+      } 
     }
+
 
 }

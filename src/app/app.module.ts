@@ -40,3 +40,4 @@ import { ShopModalComponent } from './shop/shop-modal/shop-modal.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+ 

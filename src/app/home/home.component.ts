@@ -35,15 +35,22 @@ export class HomeComponent implements OnInit {
     this.shirts=[];
   }
 
-  findClothes(){
-    this.clothesService.getClothes().then((data) => {
-        this.shirts = data;
-    }); 
+  findClothes(){ 
+    this.clothesService.getClothes()
+    .map(res => res.json())
+    .subscribe(
+      data => this.shirts = data,
+      err => this.handleError(err),
+      () => console.log('get clothes completed')
+   ); 
+  } 
+
+  private handleError(error: any): void {
+    // Repeat the action until it does correctly
+    this.findClothes();
   }
   ngOnInit() {
 
-    // let headers = new Headers({ 'Content-Type': 'application/json' });
-    // let options = new RequestOptions({ headers: headers });
     this.findClothes();
   } 
 

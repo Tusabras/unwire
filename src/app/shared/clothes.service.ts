@@ -11,17 +11,20 @@ export class ClothesService {
 
   constructor(private http: Http) {}
 
-  //get all heroes from db
-  getClothes(): Promise<any> {
-    return this.http.get('http://mock-shirt-backend.getsandbox.com/shirts')
-                .map(res => res.json())
-                .toPromise()
-                .catch(this.handleError);
-  }
+
+  getClothes(): any {
+    return this.http.get('https://mock-shirt-backend.getsandbox.com/shirts')            
+  }   
+
+  postOrder(total, shirts): any { 
+      let data = { total: total, basket: {shirts} }
+      return this.http.post('https://mock-shirt-backend.getsandbox.com/order', JSON.stringify(data), this.options)
+    }
+  
 
   //handle errors
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
-    return Promise.reject(error.message || error);
-  }
+  // private handleError(error: any): Promise<any> {
+  //   console.error('An error occurred', error); // for demo purposes only
+  //   return Promise.reject(error.message || error);
+  // }
 }

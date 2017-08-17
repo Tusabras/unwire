@@ -10,70 +10,41 @@
           <h4 class="modal-title">MY BASKET CART</h4>
         </div>
         <div class="modal-body">
-            <span *ngFor="let item of [1,2,3,4,5,6]">
+            <span *ngFor="let shirt of shirtsToBuy;let i = index">
             <div class="row">
                 <div class="col-sm-4">
-                    <a href="" class="remove-item"><i class="fa fa-times" style="color:grey;"></i></a>
-                    <img src="https://unsplash.it/128/128" width='40' height='40'>
+                    <a (click)="removeFromCart(shirt.id, i)" class="remove-item"><i class="fa fa-times" style="color:grey;"></i></a>
+                    <img [src]="shirt.picture" width='40' height='40'>
                     
                 </div>
               <div class="col-sm-4">
-                  <p style="text-align:left;"><b>{{item}}</b></p>
+                  <p style="text-align:left;"><b>{{shirt.name}}</b></p>
               </div>
               <div class="col-sm-4"> 
-                  <p style="text-align:right;"><b>12 €</b></p>
+                  <p style="text-align:right;"><b>{{shirt.price | currency:'EUR':'true':'1.2-2'}}</b></p>
               </div>
             </div>
             <hr>
             </span>
             
-            <div class="row">
-              <div class="col-sm-8">
-                  <p style="text-align:left;">TAX (8%)</p>
-              </div>
-              <div class="col-sm-4">
-                  <p style="text-align:right;"><i class="fa fa-euro"></i> 12</p>
-              </div>
-            </div>
             <hr>
             <div class="row">
               <div class="col-sm-6">
                   <p style="font-size: 1.5em;text-align:left;">Total cost</p>
-              </div>
+              </div> 
               <div class="col-sm-6">
-                  <p style="font-size: 1.5em;text-align:right;"><b style="color: #b63327;"><i class="fa fa-euro"></i> 12 </b></p>
+                  <p style="font-size: 1.5em;text-align:right;"><b style="color: #b63327;"> {{sumTotal() | currency:'EUR':'true':'1.2-2'}} </b></p>
               </div>
             </div>
-              <!--<form class="form" autocomplete="off"  (ngSubmit)="user.inviteUser(namee,emaile,passe)" #registerForm="ngForm">
-              <div class="espacio"></div>
-            <fieldset class="form-group m-b-2">
-                <label for="formGroupExampleInput">user</label>
-                <input type="text" class="form-control user" [(ngModel)]="namee" placeholder="" ngControl="name"  #name="ngForm" required>
-               
-              </fieldset>
-              <fieldset class="form-group m-b-2">
-                <label for="formGroupExampleInput">email</label>
-                <input type="email" class="form-control email" [(ngModel)]="emaile" placeholder="" ngControl="email"  #email="ngForm" required>
-               
-              </fieldset>
-              <fieldset class="form-group">
-                <label for="formGroupExampleInput2">pass</label>
-                <input type="password" class="form-control password" [(ngModel)]="passe" ngControl="password" placeholder="" required>
-              </fieldset>
-  
-            <div class="errorMessage">
-                <p >
-                  {{translations[user.error]}}
-                </p>
-  
-            </div>
-            <button type="submit" class="btn btn-primary btn-block" >Añadir usuario</button>
-            </form>-->
         </div>
         <div class="modal-footer">
-          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">{{translations["CANCEL"]}}</button> -->
-          <button type="button"  data-dismiss="modal" class="btn btn-primary">Order now</button>
-        </div>
+          <button type="button" class="btn btn-primary" [disabled]="!shirtsToBuy || shirtsToBuy.length===0" (click)="makeOrder()">Order now</button>
+          
+          <span *ngIf="thereHaveBeenAnError">
+            <br>
+            <p class="error">{{errorMsg}}</p>
+          </span> 
+        </div>   
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->

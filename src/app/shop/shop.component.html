@@ -1,5 +1,5 @@
-<div class="shop" (click)="showShopModal()"> 
- 
+<div *ngIf="shirts.length>0" class="shop" (click)="showShopModal()"> 
+  
 
 
     <span class="icon-thumbnail">
@@ -12,4 +12,4 @@
  
   </div>  
 
-  <app-shop-modal></app-shop-modal> 
+  <app-shop-modal [shirtsToBuy]="shirtsToBuy" [items]="items"></app-shop-modal> 
