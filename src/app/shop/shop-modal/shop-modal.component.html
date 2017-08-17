@@ -1,0 +1,51 @@
+<div id="shopModal" class="modal fade in left" style="z-index:20000" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <!--<faq></faq>-->
+  
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">MY BASKET CART</h4>
+        </div>
+        <div class="modal-body">
+            <span *ngFor="let shirt of shirtsToBuy;let i = index">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a (click)="removeFromCart(shirt.id, i)" class="remove-item"><i class="fa fa-times" style="color:grey;"></i></a>
+                    <img [src]="shirt.picture" width='40' height='40'>
+                    
+                </div>
+              <div class="col-sm-4">
+                  <p style="text-align:left;"><b>{{shirt.name}}</b></p>
+              </div>
+              <div class="col-sm-4"> 
+                  <p style="text-align:right;"><b>{{shirt.price | currency:'EUR':'true':'1.2-2'}}</b></p>
+              </div>
+            </div>
+            <hr>
+            </span>
+            
+            <hr>
+            <div class="row">
+              <div class="col-sm-6">
+                  <p style="font-size: 1.5em;text-align:left;">Total cost</p>
+              </div> 
+              <div class="col-sm-6">
+                  <p style="font-size: 1.5em;text-align:right;"><b style="color: #b63327;"> {{sumTotal() | currency:'EUR':'true':'1.2-2'}} </b></p>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" [disabled]="!shirtsToBuy || shirtsToBuy.length===0" (click)="makeOrder()">Order now</button>
+          
+          <span *ngIf="thereHaveBeenAnError">
+            <br>
+            <p class="error">{{errorMsg}}</p>
+          </span> 
+        </div>   
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  
